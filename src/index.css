@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import "tailwindcss";
+
+@tailwind utilities;
+
+/* Global styles */
+body {
+  @apply bg-gray-900 text-white font-sans m-0 min-h-screen flex items-center justify-center;
+}
+
+a {
+  @apply text-purple-400 hover:text-purple-300 font-medium;
+}
+
+h1 {
+  @apply text-4xl font-bold text-purple-400 mb-6;
+}
+
+button {
+  @apply bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition;
+}
