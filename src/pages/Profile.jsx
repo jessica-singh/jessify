@@ -65,7 +65,7 @@ const Profile = () => {
         <div className="flex flex-col sm:flex-row items-center gap-6 mb-6">
           <div className="relative w-24 h-24 rounded-full overflow-hidden bg-purple-400 text-white flex items-center justify-center text-3xl font-bold">
             {userData.profilePic ? (
-              <img src={`http://localhost:5000${userData.profilePic}`} alt="Profile" className="w-full h-full object-cover" />
+              <img src={`${import.meta.env.VITE_API_URL}${userData.profilePic}`} alt="Profile" className="w-full h-full object-cover" />
             ) : (
               userData.username[0].toUpperCase()
             )}
@@ -151,7 +151,7 @@ const Profile = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
               {userData.posts.map((post) => (
                 <div key={post._id} className="aspect-square overflow-hidden rounded-md border border-white/10">
-                  <img src={`http://localhost:5000${post.imageUrl}`} alt="Post" className="w-full h-full object-cover" />
+                  <img src={`${import.meta.env.VITE_API_URL}${post.imageUrl}`} alt="Post" className="w-full h-full object-cover" />
                 </div>
               ))}
             </div>

@@ -38,17 +38,21 @@ const Login = () => {
       setError('Please enter a valid email address');
       return;
     }
+setIsLoading(true);
+try {
+  const res = await axios.post(
+    `${import.meta.env.VITE_API_URL}/api/auth/login`,
+    { email, password }
+  );
+  saveAuth(res.data.token, res.data.user);
+  navigate('/feed');
+} catch (err) {
+  setError(err.response?.data?.message || 'Unable to log in. Please try again.');
+} finally {
+  setIsLoading(false);
+}
 
-    setIsLoading(true);
-    try {
-      const res = await axios.post('/auth/login', { email, password });
-      saveAuth(res.data.token, res.data.user); // ⬅️ Save using sessionStorage
-      navigate('/feed');
-    } catch (err) {
-      setError(err.response?.data?.message || 'Unable to log in. Please try again.');
-    } finally {
-      setIsLoading(false);
-    }
+
   };
 
   return (

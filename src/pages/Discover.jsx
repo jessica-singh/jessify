@@ -49,7 +49,7 @@ const Discover = () => {
               >
                 {user.profilePic && (
                   <img
-                    src={user.profilePic}
+                    src={`${import.meta.env.VITE_API_URL}${user.profilePic}`}
                     alt="avatar"
                     className="w-10 h-10 rounded-full object-cover"
                   />

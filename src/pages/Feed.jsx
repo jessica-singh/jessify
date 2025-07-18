@@ -51,7 +51,7 @@ const Feed = () => {
                   </div>
                 </div>
                 <img
-                src={`http://localhost:5000${post.imageUrl}`}
+                src={`${import.meta.env.VITE_API_URL}${post.imageUrl}`}
                 alt="Post"
                 className="w-64 h-64 object-cover rounded-lg shadow-md"
                 />
