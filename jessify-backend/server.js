@@ -25,9 +25,10 @@ const __dirname = path.dirname(__filename);
 
 // Middleware
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: ['http://localhost:5173', 'https://jesssify.vercel.app'], // ✅ add live domain
   credentials: true,
 }));
+
 app.use(express.json());
 app.use(fileUpload());
 
