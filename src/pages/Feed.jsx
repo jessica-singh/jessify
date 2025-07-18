@@ -8,7 +8,7 @@ const Feed = () => {
 
   const fetchFeed = async () => {
     try {
-      const token = sessionStorage.getItem('token');
+      const token = sessionStorage.getItem('auth_token');
       const res = await axios.get('/feed', {
         headers: { Authorization: `Bearer ${token}` },
       });
