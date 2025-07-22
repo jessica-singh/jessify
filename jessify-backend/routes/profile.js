@@ -65,7 +65,7 @@ router.put('/update', authMiddleware, async (req, res) => {
 });
 
 // GET /api/profile/user/:id — Public profile with posts & follow status
-router.get('/user/:id', authMiddleware, async (req, res) => {
+('/user/:id', authMiddleware, async (req, res) => {
   try {
     const targetUser = await User.findById(req.params.id)
       .populate('posts')

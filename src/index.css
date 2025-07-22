@@ -5,8 +5,10 @@
 
 /* Global styles */
 body {
-  @apply bg-gray-900 text-white font-sans m-0 min-h-screen flex items-center justify-center;
+  @apply text-white font-sans m-0 min-h-screen;
+  background: linear-gradient(to bottom right, #6b21a8, #4c1d95, #1e1b4b); /* deep purple gradient */
 }
+
 
 a {
   @apply text-purple-400 hover:text-purple-300 font-medium;

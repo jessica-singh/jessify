@@ -1,4 +1,3 @@
-// src/pages/UserProfile.jsx
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from '../utils/axios';
@@ -37,19 +36,23 @@ const UserProfile = () => {
     }
   };
 
-  if (!user) return <div className="text-center mt-10">Loading...</div>;
+  if (!user) return <div className="text-center mt-10 text-white">Loading...</div>;
 
   return (
-    <div className="max-w-3xl mx-auto mt-10 p-4">
+    <div className="max-w-3xl mx-auto mt-10 p-4 text-white">
       <div className="flex items-center gap-4">
         <img
-          src={user.profilePic || '/uploads/default.jpg'}
+          src={
+            user.profilePic
+              ? `${import.meta.env.VITE_API_URL}${user.profilePic}`
+              : `${import.meta.env.VITE_API_URL}/uploads/default.jpg`
+          }
           alt={user.username}
           className="w-24 h-24 rounded-full object-cover border"
         />
         <div>
           <h2 className="text-xl font-bold">{user.username}</h2>
-          <p className="text-sm text-gray-500">{user.bio || 'No bio available'}</p>
+          <p className="text-sm text-gray-400">{user.bio || 'No bio available'}</p>
           <button
             onClick={handleFollowToggle}
             className={`mt-2 px-4 py-1 rounded-full text-white ${
@@ -61,7 +64,7 @@ const UserProfile = () => {
         </div>
       </div>
 
-      <hr className="my-6" />
+      <hr className="my-6 border-white/20" />
 
       <h3 className="text-lg font-semibold mb-4">Posts</h3>
       {posts.length === 0 ? (
@@ -69,13 +72,24 @@ const UserProfile = () => {
       ) : (
         <div className="grid grid-cols-3 gap-3">
           {posts.map((post) => (
-            <img
-              key={post._id}
-              src={post.image || '/uploads/default.jpg'}
-              alt={post.caption}
-              className="w-full h-40 object-cover rounded"
-            />
-          ))}
+  <div
+    key={post._id}
+    onClick={() => navigate(`/post/${post._id}`)} // 👈 clickable post
+    className="cursor-pointer"
+  >
+    <img
+      src={
+        post.imageUrl
+          ? `${import.meta.env.VITE_API_URL}${post.imageUrl}`
+          : `${import.meta.env.VITE_API_URL}/uploads/default.jpg`
+      }
+      alt={post.caption}
+      className="w-full h-40 object-cover rounded"
+    />
+    <p className="text-sm text-gray-300 mt-1 truncate">{post.caption}</p>
+  </div>
+))}
+
         </div>
       )}
     </div>
